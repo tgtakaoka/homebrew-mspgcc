@@ -1,4 +1,5 @@
 class BinutilsMsp430 < Formula
+  desc "GNU assembler, linker, and binaru utilities for MSP430 MCUs"
   homepage "https://sourceforge.net/projects/mspgcc/"
   url "https://ftpmirror.gnu.org/binutils/binutils-2.22.tar.gz"
   sha256 "12c26349fc7bb738f84b9826c61e103203187ca2d46f08b82e61e21fcbc6e3e6"
@@ -26,15 +27,12 @@ class BinutilsMsp430 < Formula
     info.rmtree
 
     target_bin = bin/target
-    target_bin.mkpath
     target_bin.install Dir["#{prefix}/#{target}/bin/*"]
 
     target_lib = lib/target/"lib"
-    target_lib.mkpath
     target_lib.install Dir["#{prefix}/#{target}/lib/*"]
 
     target_include = include/target/"include"
-    target_include.mkpath
     target_include.install Dir["#{prefix}/#{target}/include/*"]
   end
 end
