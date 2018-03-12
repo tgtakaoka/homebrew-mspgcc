@@ -1,5 +1,5 @@
 class BinutilsMsp430 < Formula
-  homepage "http://mspgcc.sourceforge.net"
+  homepage "https://sourceforge.net/projects/mspgcc/"
   url "https://ftpmirror.gnu.org/binutils/binutils-2.22.tar.gz"
   sha256 "12c26349fc7bb738f84b9826c61e103203187ca2d46f08b82e61e21fcbc6e3e6"
 

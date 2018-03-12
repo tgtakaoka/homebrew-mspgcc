@@ -1,5 +1,5 @@
 class GccMsp430 < Formula
-  homepage "http://mspgcc.sourceforge.net"
+  homepage "https://sourceforge.net/projects/mspgcc/"
   url "https://ftpmirror.gnu.org/gcc/gcc-4.7.0/gcc-4.7.0.tar.bz2"
   sha256 "a680083e016f656dab7acd45b9729912e70e71bbffcbf0e3e8aa1cccf19dc9a5"
   env :std
