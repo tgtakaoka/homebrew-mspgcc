@@ -8,7 +8,6 @@ class GccMsp430 < Formula
   depends_on "headers-msp430"
   depends_on "mpfr"
   depends_on "gmp"
-  depends_on "isl"
   depends_on "libmpc"
 
   patch do
