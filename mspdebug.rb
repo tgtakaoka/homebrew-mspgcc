@@ -22,7 +22,6 @@ class Mspdebug < Formula
     end
     patch do
       url "https://raw.githubusercontent.com/tgtakaoka/scripts-msp430/mspgcc4/mspdebug-enhance_dis_lowercase.patch"
-      sha256 "962891f483117d6e7e342333a4dd50b333feb89ff9ab192d9980fd1ec3d19c65"
       sha256 "97754e4f844e13cfc14777a5493f5776863a2fac863dbe650882c02372311321"
     end
   end
