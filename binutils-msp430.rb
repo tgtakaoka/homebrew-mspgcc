@@ -9,6 +9,8 @@ class BinutilsMsp430 < Formula
     sha256 "1dc3cfb0eac093b5f016f4264b811b4352515e8a3519c91240c73bacd256a667"
   end
 
+  depends_on "texinfo@4.8" => :build
+
   resource "config" do
     url "https://git.savannah.gnu.org/git/config.git"
   end
