@@ -6,9 +6,10 @@ class GccMsp430 < Formula
 
   depends_on "binutils-msp430"
   depends_on "headers-msp430"
-  depends_on "mpfr"
-  depends_on "gmp"
-  depends_on "libmpc"
+  depends_on "mpfr" => :build
+  depends_on "gmp" => :build
+  depends_on "libmpc" => :build
+  depends_on "texinfo@4.8" => :build if OS.linux?
 
   patch do
     url "https://downloads.sourceforge.net/project/mspgcc/Patches/gcc-4.7.0/msp430-gcc-4.7.0-20120911.patch"
@@ -27,7 +28,19 @@ class GccMsp430 < Formula
     sha256 "4fb8e588fb1db8bc524427cba761ea1ad7f4df3842612b7c30b43c097b214464"
   end
 
+  resource "config" do
+    url "https://git.savannah.gnu.org/git/config.git"
+  end
+
   def install
+    # Update config.guess and config.sub to be able to handle newer
+    # architechture such as aarch64.
+    resource("config").stage do
+      buildpath.install "config.guess"
+      buildpath.install "config.sub"
+    end
+
+    ENV.prepend_path "PATH", Formula["texinfo@4.8"].opt_prefix/"bin" if OS.linux?
     ENV.remove_from_cflags "-Qunused-arguments"
     ENV.remove_from_cflags(/ ?-march=\S*/)
     ENV.remove_from_cflags(/ ?-msse[\d\.]*/)

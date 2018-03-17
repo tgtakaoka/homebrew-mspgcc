@@ -11,8 +11,8 @@ class Mspdebug < Formula
     sha256 "8b23c23287fc9ab143921257a1859f8ac0dbb9e093261dfe931ec7d6a3548d97" => :yosemite
   end
 
-  depends_on "hidapi"
-  depends_on "libusb-compat"
+  depends_on "hidapi" if OS.mac?
+  depends_on "libusb-compat" if OS.mac?
 
   head do
     url "https://github.com/dlbeer/mspdebug.git"
@@ -27,7 +27,8 @@ class Mspdebug < Formula
   end
 
   def install
-    ENV.append_to_cflags "-I#{Formula["hidapi"].opt_include}/hidapi"
+    ENV.append_to_cflags "-I#{Formula["hidapi"].opt_include}/hidapi" if OS.mac?
+    ENV.append_to_cflags "-I/usr/include/hidapi" if OS.linux?
     system "make", "PREFIX=#{prefix}", "install"
   end
 

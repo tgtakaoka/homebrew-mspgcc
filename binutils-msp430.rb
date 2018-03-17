@@ -9,7 +9,7 @@ class BinutilsMsp430 < Formula
     sha256 "1dc3cfb0eac093b5f016f4264b811b4352515e8a3519c91240c73bacd256a667"
   end
 
-  depends_on "texinfo@4.8" => :build
+  depends_on "texinfo@4.8" => :build if OS.linux?
 
   resource "config" do
     url "https://git.savannah.gnu.org/git/config.git"
@@ -23,6 +23,7 @@ class BinutilsMsp430 < Formula
       buildpath.install "config.sub"
     end
 
+    ENV.prepend_path "PATH", Formula["texinfo@4.8"].opt_prefix/"bin" if OS.linux?
     target = "msp430"
     mkdir "build" do
       system "../configure",

@@ -13,10 +13,24 @@ class GdbMsp430 < Formula
     sha256 "9bf1f5f8daab1ab72c5b0012d792f7a4cadaf252e1b51e576839a5a0e2e3c1a1"
   end
 
+  depends_on "texinfo@4.8" => :build if OS.linux?
+
+  resource "config" do
+    url "https://git.savannah.gnu.org/git/config.git"
+  end
+
   def install
+    # Update config.guess and config.sub to be able to handle newer
+    # architechture such as aarch64.
+    resource("config").stage do
+      buildpath.install "config.guess"
+      buildpath.install "config.sub"
+    end
+
+    ENV.prepend_path "PATH", Formula["texinfo@4.8"].opt_prefix/"bin" if OS.linux?
     target = "msp430"
     mkdir "build" do
-      ENV["CFLAGS"] = "-Wno-error=return-type -Wno-error=size-pointer-memaccess -Wno-error=sometimes-uninitialized"
+      ENV["CFLAGS"] = "-Wno-error=return-type -Wno-error=size-pointer-memaccess -Wno-error=sometimes-uninitialized" if ENV.compiler == :clang
       system "../configure",
         "--target=#{target}",
         "--program-prefix=#{target}-",
