@@ -9,7 +9,18 @@ class BinutilsMsp430 < Formula
     sha256 "1dc3cfb0eac093b5f016f4264b811b4352515e8a3519c91240c73bacd256a667"
   end
 
+  resource "config" do
+    url "https://git.savannah.gnu.org/git/config.git"
+  end
+
   def install
+    # Update config.guess and config.sub to be able to handle newer
+    # architechture such as aarch64.
+    resource("config").stage do
+      buildpath.install "config.guess"
+      buildpath.install "config.sub"
+    end
+
     target = "msp430"
     mkdir "build" do
       system "../configure",
