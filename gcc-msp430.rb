@@ -6,9 +6,9 @@ class GccMsp430 < Formula
 
   depends_on "binutils-msp430"
   depends_on "headers-msp430"
-  depends_on "mpfr" => :build
-  depends_on "gmp" => :build
-  depends_on "libmpc" => :build
+  depends_on "mpfr" => :build if OS.mac?
+  depends_on "gmp" => :build if OS.mac?
+  depends_on "libmpc" => :build if OS.mac?
   depends_on "texinfo@4.8" => :build if OS.linux?
 
   patch do
