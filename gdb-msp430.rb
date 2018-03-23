@@ -9,7 +9,7 @@ class GdbMsp430 < Formula
     sha256 "b70b54df5e00d24a3a5b744545a87ce656bdc88546081c6ffabefbc4d6c42956"
   end
   patch do
-    url "https://raw.githubusercontent.com/tgtakaoka/scripts-msp430/mspgcc4/gdb-7.2a_libiberty-multilib.patch"
+    url "https://raw.githubusercontent.com/tgtakaoka/homebrew-mspgcc/master/patches/gdb-7.2a_libiberty-multilib.patch"
     sha256 "9bf1f5f8daab1ab72c5b0012d792f7a4cadaf252e1b51e576839a5a0e2e3c1a1"
   end
 

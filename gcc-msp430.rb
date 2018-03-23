@@ -16,16 +16,11 @@ class GccMsp430 < Formula
     sha256 "db0b6e502c89be4cfee518e772125eaea66cc289d9428c57ddcc187a3be9e77a"
   end
   patch do
-    url "https://raw.githubusercontent.com/tgtakaoka/scripts-msp430/mspgcc4/gcc-4.7.0_PR-54638.patch"
-    sha256 "ca223db60861c23795355cd7be30539d64ef2b290b3cdfbb7d838a4ce1b37bf7"
-  end
-  patch do
-    url "https://raw.githubusercontent.com/tgtakaoka/scripts-msp430/mspgcc4/gcc-4.7.0_gperf.patch"
-    sha256 "b491390432e33d64d136d85a14a7af6946941a81a8bf9fe4b95cb00deab53c1d"
-  end
-  patch do
-    url "https://raw.githubusercontent.com/tgtakaoka/scripts-msp430/mspgcc4/gcc-4.7.0_libiberty-multilib.patch"
-    sha256 "4fb8e588fb1db8bc524427cba761ea1ad7f4df3842612b7c30b43c097b214464"
+    url "https://raw.githubusercontent.com/tgtakaoka/homebrew-mspgcc/master/patches/gcc-4.7.0-patches.tar.xz"
+    sha256 "0095576b979de004d626b527797e12be81d1683bfc570f8d28504bcb6cf13272"
+    apply "gcc-4.7.0_PR-54638.patch"
+    apply "gcc-4.7.0_gperf.patch"
+    apply "gcc-4.7.0_libiberty-multilib.patch"
   end
 
   resource "config" do
