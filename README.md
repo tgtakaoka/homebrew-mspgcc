@@ -2,9 +2,9 @@ homebrew-mspgcc
 ===============
 
 The [Homebrew][] formulae of GCC toolchain for MSP430, also known as
-[MSPGCC][] which is based on [GNU GCC][] 4.x, and [MSPDEBUG][]. This
-repository includes `binutils-msp430`, `headers-msp430`, `gcc-msp430`,
-`libc-msp430`, `gdb-msp430`.
+[MSPGCC][] which is based on [GNU GCC][] 4.7. This repository includes
+`binutils-msp430`, `headers-msp430`, `gcc-msp430`, `libc-msp430`,
+`gdb-msp430`.
 
 To get everything, execute the following commands.
 
