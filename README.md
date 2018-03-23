@@ -12,7 +12,7 @@ To get everything, execute the following commands.
     $ brew install libc-msp430 gdb-msp430
     $ brew install --HEAD tgtakaka/mspgcc/mspdebug
 
-You may want to install 'mspdebug-head` by the following commands.
+You may want to install `mspdebug-head` by the following commands.
 
     $ brew tap tgtakaoka/tinyos-msp430
     $ brew install --HEAD mspdebug-head
