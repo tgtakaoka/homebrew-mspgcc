@@ -10,8 +10,6 @@ class TexinfoAT48 < Formula
     version of these files
   EOS
 
-  depends_on "ncurses" unless OS.mac?
-
   resource "config" do
     url "https://git.savannah.gnu.org/git/config.git"
   end
