@@ -3,6 +3,8 @@ class GccMsp430 < Formula
   homepage "https://sourceforge.net/projects/mspgcc/"
   url "https://ftpmirror.gnu.org/gcc/gcc-4.7.0/gcc-4.7.0.tar.bz2"
   sha256 "a680083e016f656dab7acd45b9729912e70e71bbffcbf0e3e8aa1cccf19dc9a5"
+  version "4.7.0-20120911"
+  revision 1
 
   depends_on "binutils-msp430"
   depends_on "headers-msp430"

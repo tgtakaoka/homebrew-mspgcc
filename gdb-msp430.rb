@@ -3,6 +3,8 @@ class GdbMsp430 < Formula
   homepage "https://sourceforge.net/projects/mspgcc/"
   url "https://ftpmirror.gnu.org/gdb/gdb-7.2a.tar.bz2"
   sha256 "3c24dde332e33bfe2d5980c726d76224ebf8304278112a07bf701f8d2145d9bc"
+  version "7.2a-20111205"
+  revision 1
 
   patch do
     url "https://downloads.sourceforge.net/project/mspgcc/Patches/gdb-7.2a/msp430-gdb-7.2a-20111205.patch"

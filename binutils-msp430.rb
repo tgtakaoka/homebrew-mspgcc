@@ -3,6 +3,8 @@ class BinutilsMsp430 < Formula
   homepage "https://sourceforge.net/projects/mspgcc/"
   url "https://ftpmirror.gnu.org/binutils/binutils-2.22.tar.gz"
   sha256 "12c26349fc7bb738f84b9826c61e103203187ca2d46f08b82e61e21fcbc6e3e6"
+  version "2.22-20120911"
+  revision 1
 
   patch do
     url "https://downloads.sourceforge.net/project/mspgcc/Patches/binutils-2.22/msp430-binutils-2.22-20120911.patch"
