@@ -44,13 +44,15 @@ class GccMsp430 < Formula
     ENV.remove_from_cflags(/ ?-mmacosx-version-min=10\.\d+/)
 
     target = "msp430"
+    # languages = "c,c++"
+    languages = "c" 
     # gcc must be built outside of the source directory.
     mkdir "build" do
       system "../configure",
         "--target=#{target}",
         "--program-prefix=#{target}-",
         "--prefix=#{prefix}",
-        "--enable-languages=c,c++",
+        "--enable-languages=#{languages}",
         "--with-as=#{HOMEBREW_PREFIX}/bin/#{target}-as",
         "--with-ld=#{HOMEBREW_PREFIX}/bin/#{target}-ld",
         "--with-system-zlib",
