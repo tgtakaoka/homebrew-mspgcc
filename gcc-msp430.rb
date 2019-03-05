@@ -64,10 +64,12 @@ class GccMsp430 < Formula
 
     (lib/"libiberty.a").delete
     info.rmtree
-    (man/"man7").rmtree
+    man7.rmtree
 
+    # Can not simply install symbolic links under lib/target/lib because
+    # lib/target/lib/{mcpu-430x,mmpy-16} conflict with libc-msp430.
     target_lib = HOMEBREW_PREFIX/"lib/#{target}/lib"
-    (lib/target).install Dir["#{prefix}/#{target}/lib/*"]
+    (lib/target/"lib").install Dir[prefix/target/"lib/*"]
     (prefix/target/"lib").rmtree
     (prefix/target).install_symlink target_lib
 

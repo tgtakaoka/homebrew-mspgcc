@@ -7,14 +7,14 @@ class HeadersMsp430 < Formula
 
   def install
     target = "msp430"
-    ENV["MSP430MCU_ROOT"] = Dir.pwd
+
+    inreplace "scripts/install.sh" do |s|
+      s.gsub! "INCPATH=${PREFIX}/#{target}/include", "INCPATH=${PREFIX}/include/#{target}/include"
+      s.gsub! "LIBPATH=${PREFIX}/#{target}/lib", "LIBPATH=${PREFIX}/lib/#{target}/lib"
+    end
+
     bin.mkdir
+    ENV["MSP430MCU_ROOT"] = Dir.pwd
     system "./scripts/install.sh", "#{prefix}"
-
-    target_lib = lib/target/"lib"
-    target_lib.install Dir["#{prefix}/#{target}/lib/*"]
-
-    target_include = include/target/"include"
-    target_include.install Dir["#{prefix}/#{target}/include/*"]
   end
 end

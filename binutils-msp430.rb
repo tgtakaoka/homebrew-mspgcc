@@ -39,16 +39,18 @@ class BinutilsMsp430 < Formula
       system "make", "install"
     end
 
-    (lib/"libiberty.a").rmtree
+    (lib/"libiberty.a").delete
     info.rmtree
 
     target_bin = bin/target
-    target_bin.install Dir["#{prefix}/#{target}/bin/*"]
+    target_bin.install Dir[prefix/target/"bin/*"]
+    (prefix/target/"bin").rmdir
 
+    # Can not simply install symbolic links under lib/target/lib because
+    # lib/target/lib/ldscripts conflicts with headers-msp430.
     target_lib = lib/target/"lib"
-    target_lib.install Dir["#{prefix}/#{target}/lib/*"]
-
-    target_include = include/target/"include"
-    target_include.install Dir["#{prefix}/#{target}/include/*"]
+    target_lib.install Dir[prefix/target/"lib/*"]
+    (prefix/target/"lib").rmtree
+    (prefix/target).install_symlink target_lib
   end
 end

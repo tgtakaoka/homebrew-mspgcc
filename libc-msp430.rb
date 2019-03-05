@@ -15,10 +15,12 @@ class LibcMsp430 < Formula
       system "make", "install"
     end
 
+    # Can not simply install symbolic links under lib/target/lib because
+    # lib/target/lib/{mcpu-430x,mmpy-16} conflict with gcc-msp430.
     target_lib = lib/target/"lib"
-    target_lib.install Dir["#{prefix}/#{target}/lib/*"]
+    target_lib.install Dir[prefix/target/"lib/*"]
 
     target_include = include/target/"include"
-    target_include.install Dir["#{prefix}/#{target}/include/*"]
+    target_include.install_symlink Dir[prefix/target/"include/*"]
   end
 end
