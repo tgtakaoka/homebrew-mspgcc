@@ -4,7 +4,7 @@ class BinutilsMsp430 < Formula
   url "https://ftpmirror.gnu.org/binutils/binutils-2.22.tar.gz"
   sha256 "12c26349fc7bb738f84b9826c61e103203187ca2d46f08b82e61e21fcbc6e3e6"
   version "2.22-20120911"
-  revision 1
+  revision 2
 
   patch do
     url "https://downloads.sourceforge.net/project/mspgcc/Patches/binutils-2.22/msp430-binutils-2.22-20120911.patch"
@@ -39,18 +39,17 @@ class BinutilsMsp430 < Formula
       system "make", "install"
     end
 
+    # Remove unnecessary files.
     (lib/"libiberty.a").delete
     info.rmtree
 
-    target_bin = bin/target
-    target_bin.install Dir[prefix/target/"bin/*"]
-    (prefix/target/"bin").rmdir
+    # Create symlinks to no-prefix binaries as bin/target.
+    bin.install_symlink prefix/target/"bin" => target
 
-    # Can not simply install symbolic links under lib/target/lib because
-    # lib/target/lib/ldscripts conflicts with headers-msp430.
-    target_lib = lib/target/"lib"
-    target_lib.install Dir[prefix/target/"lib/*"]
-    (prefix/target/"lib").rmtree
-    (prefix/target).install_symlink target_lib
+    # Move target/lib to lib/target/lib
+    (lib/target).install prefix/target/"lib"
+    # Create symlink for msp430-ld to see linker scripts from
+    # headers-msp430.
+    (prefix/target).install_symlink "#{HOMEBREW_PREFIX}/lib/#{target}/lib"
   end
 end

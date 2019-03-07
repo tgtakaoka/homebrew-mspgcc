@@ -18,10 +18,10 @@ You may want to install `mspdebug-head` by the following commands.
 
 Version:
 
-    binutils-msp430-2.22-20120911_1
-    headers-msp430-20130321_1
-    gcc-msp430-4.7.0-20120911_1
-    libc-msp430-20120716_1
+    binutils-msp430-2.22-20120911_2
+    headers-msp430-20130321_2
+    gcc-msp430-4.7.0-20120911_2
+    libc-msp430-20120716_2
     gdb-msp430-7.2a-20111205_1
 
 [Homebrew]: https://brew.sh/

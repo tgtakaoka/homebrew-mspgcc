@@ -4,7 +4,7 @@ class GccMsp430 < Formula
   url "https://ftpmirror.gnu.org/gcc/gcc-4.7.0/gcc-4.7.0.tar.bz2"
   sha256 "a680083e016f656dab7acd45b9729912e70e71bbffcbf0e3e8aa1cccf19dc9a5"
   version "4.7.0-20120911"
-  revision 1
+  revision 2
 
   depends_on "binutils-msp430"
   depends_on "headers-msp430"
@@ -62,18 +62,14 @@ class GccMsp430 < Formula
       system "make", "install"
     end
 
+    # Remove unnecessary files.
     (lib/"libiberty.a").delete
     info.rmtree
     man7.rmtree
 
-    # Can not simply install symbolic links under lib/target/lib because
-    # lib/target/lib/{mcpu-430x,mmpy-16} conflict with libc-msp430.
-    target_lib = HOMEBREW_PREFIX/"lib/#{target}/lib"
-    (lib/target/"lib").install Dir[prefix/target/"lib/*"]
-    (prefix/target/"lib").rmtree
-    (prefix/target).install_symlink target_lib
-
-    target_include = HOMEBREW_PREFIX/"include/#{target}/include"
-    (prefix/target).install_symlink target_include
+    # Create symlinks to libc-msp430.
+    (prefix/target/"lib").rmtree  # Remove empty prefix/taret/lib
+    (prefix/target).install_symlink "#{HOMEBREW_PREFIX}/lib/#{target}/lib"
+    (prefix/target).install_symlink "#{HOMEBREW_PREFIX}/include/#{target}/include"
   end
 end
