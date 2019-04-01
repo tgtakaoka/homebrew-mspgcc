@@ -18,7 +18,7 @@ You may want to install `mspdebug-head` by the following commands.
 
 Version:
 
-    binutils-msp430-2.22-20120911_2
+    binutils-msp430-2.22-20120911_3
     headers-msp430-20130321_3
     gcc-msp430-4.7.0-20120911_2
     libc-msp430-20120716_2
