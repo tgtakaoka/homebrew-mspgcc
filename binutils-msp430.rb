@@ -4,7 +4,7 @@ class BinutilsMsp430 < Formula
   url "https://ftpmirror.gnu.org/binutils/binutils-2.22.tar.gz"
   sha256 "12c26349fc7bb738f84b9826c61e103203187ca2d46f08b82e61e21fcbc6e3e6"
   version "2.22-20120911"
-  revision 3
+  revision 4
 
   patch do
     url "https://downloads.sourceforge.net/project/mspgcc/Patches/binutils-2.22/msp430-binutils-2.22-20120911.patch"
@@ -46,13 +46,15 @@ class BinutilsMsp430 < Formula
     # Create symlinks to no-prefix binaries as bin/target.
     bin.install_symlink prefix/target/"bin" => target
 
+    # Create empty place holders for gcc-msp430 and libc-msp430
+    target_lib = HOMEBREW_PREFIX/"lib/#{target}/lib"
+    target_include = HOMEBREW_PREFIX/"include/#{target}/include"
+    target_lib.mkpath
+    target_include.mkpath
     # Move target/lib to lib/target/lib
     (lib/target).install prefix/target/"lib"
     # Create symlink for msp430-ld to see linker scripts from
     # headers-msp430.
-    (prefix/target).install_symlink "#{HOMEBREW_PREFIX}/lib/#{target}/lib"
-    # Create placeholder for headers-msp430.
-    (include/target).mkpath
-    FileUtils.touch include/target/".binutils-msp430"
+    (prefix/target).install_symlink target_lib
   end
 end
